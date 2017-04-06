@@ -2,17 +2,9 @@
   <head>
   </head>
   <body>
-    <script>
-      function getQuerystring (key) {
-        key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-        var regex = new RegExp("[\\?&]"+key+"=([^]*)");
-        var qs = regex.exec(location.search);
-        return qs[1];
-      }
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="https://api.trello.com/1/client.js?key=59a5fbd69a4562526397df1d36a37710"></script>
+    <script src="./js/handler.js"></script>
 
-      document.write('Message ID: ' + decodeURIComponent(getQuerystring('messageId')) + '<br />');
-      document.write('Date & Time: ' + decodeURIComponent(getQuerystring('datetime')) + '<br /><br />');
-      document.write('Message: ' + decodeURIComponent(getQuerystring('message')));
-    </script>
   </body>
 </html>

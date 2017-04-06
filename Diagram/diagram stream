@@ -1,0 +1,18 @@
+@startuml
+
+actor user
+participant "Hootsuite" as HS
+participant "HS Stream" as HT
+participant "Trello" as TR
+
+user -> HS: Visualize Trello's board inside Hootsuite
+HS -> HT: stream.html
+HT -> TR : Oauth
+TR -> user: Grant access
+TR -> HT: authorization success
+user -> HT: user Select board they want to see
+HT -> TR: Retrieve Trello data in the stream
+TR -> HT: Return card in a stream
+HT -> HS: Display
+
+@enduml

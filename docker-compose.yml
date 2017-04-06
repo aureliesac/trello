@@ -1,0 +1,30 @@
+version: "2"
+
+services:
+  web:
+    build: app
+    command: nodemon --inspect=0.0.0.0:9222 app.js
+    volumes:
+      - ./app:/code
+    ports:
+      - "8000:8000"
+      - "9222:9222"
+  nginx:
+    image: nginx
+    volumes:
+      - ./static:/usr/share/nginx/html:ro
+      - ./conf.d:/etc/nginx/conf.d:ro
+    ports:
+      - "80"
+      - "443"
+    links:
+      - web:web
+    depends_on:
+      - web
+  ngrok:
+    image: wernight/ngrok
+    ports:
+      - "4040"
+    links:
+      - nginx
+    command: ngrok http nginx:80
