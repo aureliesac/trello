@@ -1,0 +1,21 @@
+@startuml
+actor user
+participant "Trello" as TR
+participant "Trello APP" as TA
+participant "Hootsuite" as HS
+
+
+user -> TR: Press HS power up (publish to HS)
+TR -> TA: GET /socialprofiles
+TA-> HS: OAuth auth/oauth/v2/authorize?client_id={{client_id}}&response_type=code
+HS -> user: OAuth 2.0 Autorization server
+user -> HS: Username/Password/Grant
+HS -> TA: GET /oauth?code=code
+TA -> HS: GET /v1/socialProfiles
+HS -> TA : [socialProfiles]
+TA -> TR: id, type, username
+TR -> HS: POST /v1/messages - text, [socialProfiles]
+HS -> TR: response - messageData
+
+
+@enduml
