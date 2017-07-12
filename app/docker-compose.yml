@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  web:
+    build: .
+    command: nodemon --inspect=0.0.0.0:9222 app.js
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+      - "9222:9222"

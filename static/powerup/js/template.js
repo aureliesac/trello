@@ -1,5 +1,14 @@
 /* global TrelloPowerUp */
 
+var socialids = {};
+$.get( "/api/socialids", function( data ) {
+  for (var i=0;i<data.length;i++){
+    console.log(data[i]);
+    socialids[data[i].id]=data[i].socialNetworkUsername;
+  }
+  console.log(socialids);
+});
+
 var WHITE_ICON = './images/icon-white.svg';
 var GRAY_ICON = './images/icon-gray.svg';
 
@@ -112,15 +121,20 @@ var boardButtonCallback = function(t){
 };
 
 var cardButtonCallback = function(t){
-  var items = Object.keys(parkMap).map(function(parkCode){
-    var urlForCode = 'http://www.nps.gov/' + parkCode + '/';
+  var items = Object.keys(socialids).map(function(id){
     return {
-      text: parkMap[parkCode],
-      url: urlForCode,
+      text: socialids[id],
       callback: function(t){
-        return t.attach({ url: urlForCode, name: parkMap[parkCode] })
-        .then(function(){
-          return t.closePopup();
+        $.ajax({
+          url:"/api/publishmessage",
+          type:"POST",
+          data:JSON.stringify({socialid:id,message:"my test"}),
+          contentType:"application/json; charset=utf-8",
+          dataType:"json",
+          success: function(data){
+            console.log(data);
+            return t.closePopup();
+          }
         })
       }
     };
