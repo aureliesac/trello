@@ -11,6 +11,21 @@
 
 <link type="text/css" rel="stylesheet" href="https://d2l6uygi1pgnys.cloudfront.net/jsapi/2-0/assets/css/ad_default.css">
 
+<style type="text/css">
+    #messages {
+        margin-top: 46px;
+    }
+    .hs_message, #dropdown {
+        margin: .5em;
+        border-bottom: 1px solid #ccc;
+        border-radius: 3px;
+    }
+    .hs_topBarContent {
+        background-color: rgb(0, 121, 191);
+        color: #ffffff;
+    }
+</style>
+
 </head>
 <body>
 
@@ -73,22 +88,24 @@
 
         <!--Basic Message-->
         <div id="messages">
-        <div class="hs_message">
-            <div class="hs_avatar">
-                <img class="hs_avatarImage" src="./asset/avatar.png" alt="Avatar">
-                <a href="#" class="hs_avatarLink" title="Username"></a>
-            </div>
-
-            <div class="hs_content">
-                <a href="#" class="hs_userName" title="Username">Hootsuite</a>
-                <a href="#" class="hs_postTime" target="_blank" title="Sunday, September 14 2014 at 12:00pm via Hootsuite">2 minute ago</a>
-
-                <div class="hs_contentText">
-                    <p>Welcome to Hootsuite Template App! </p>
+            <!-- <div class="hs_message">
+                <div class="hs_avatar">
+                    <img class="hs_avatarImage" src="./asset/avatar.png" alt="Avatar">
+                    <a href="#" class="hs_avatarLink" title="Username"></a>
                 </div>
-            </div>
+
+                <div class="hs_content">
+                    <a href="#" class="hs_userName" title="Username">Hootsuite</a>
+                    <a href="#" class="hs_postTime" target="_blank" title="Sunday, September 14 2014 at 12:00pm via Hootsuite">2 minute ago</a>
+
+                    <div class="hs_contentText">
+                        <p>Welcome to Hootsuite Template App! </p>
+                    </div>
+                </div>
+            </div> -->
+            <div id="dropdown"></div>
+            <div id="cards"></div>
         </div>
-      </div>
 
 
 </body>
